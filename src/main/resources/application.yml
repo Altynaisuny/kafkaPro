@@ -1,0 +1,34 @@
+spring:
+  kafka:
+    producer:
+      acks: 1
+      batch-size: 16384
+      bootstrap-servers: localhost:8090
+      buffer-memory: 33554432
+      client-id: produce-client-1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      compression-type: prducer
+      retries: 1
+
+    consumer:
+      auto-commit-interval: 5000
+      # latest, earliest, none
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:8090
+      fetch-max-wait: 500
+      fetch-min-size: 1
+      group-id: pro_date_proc
+      #如果为true，则消费者的偏移量将在后台定期提交
+      enable-auto-commit: true
+      #心跳与消费者协调员之间的预期时间（以毫秒为单位），默认值为3000
+      heartbeat-interval: 3000
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
+
+    listener:
+      concurrency: 5
+      poll-timeout: 2000
+      ack-count:
+      ack-time:
+
